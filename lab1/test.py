@@ -3,6 +3,11 @@
 # [i:] -> extracting ith charecter to the last charecter
 # [:i] -> extracting from 0th charecter to the (i-1) charecter
 
+superhero = "iron man"
+type(superhero)
+
+#----------------------------------------
+
 string = input("Enter your string: ")
 print("Last element: ",string[4:])
 print("Second to last element: ",string[:4])
