@@ -16,12 +16,16 @@ print("\nExample 3: range(4, 10, 2)")
 for i in range(4, 10, 2):
     print(i)
 
+
+numbers = [50, 100, 150, 200]
+for i in numbers:
+  print(i)
+
 #-----------------------------------------------------------------------------------------
 
 #while loop
 
 var=0
-
 while var<20:
     print(var)
     var+=1
