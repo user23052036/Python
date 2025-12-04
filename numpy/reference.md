@@ -134,6 +134,31 @@ x = np.linspace(0, 2*np.pi, 1000)
 | `arange(start, stop, step)` | Keeps adding step → may accumulate floating errors | Iterations, approximate steps |
 | `linspace(start, stop, n)`  | Divides interval into equal parts                  | Math, graphs, ML data         |
 
+<br>
+<br>
+
+## **3. `ravel()` vs `flatten()`**
+
+Here’s the crisp, no-nonsense difference:
+
+**`ravel()`**
+
+* Returns a **view** of the array whenever possible.
+* **No copy** → faster and memory-efficient.
+* If the original array changes, the raveled array may also change.
+
+**`flatten()`**
+
+* **Always returns a copy**.
+* Safe, independent array.
+* Changes in the original array won’t affect the result.
+
+**In short:** `ravel()` = view (no copy, faster). `flatten()` = copy (safer).
+
+<br>
+<br>
+
+## **4. Transpose of a matrix**
 
 
 

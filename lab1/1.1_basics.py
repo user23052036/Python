@@ -1,5 +1,7 @@
 #basic- commands
 #indexing in python is 0based and -1 represents last char
+
+# Python slicing
 # [i:] -> extracting ith charecter to the last charecter
 # [:i] -> extracting from 0th charecter to the (i-1) charecter
 # [i:j:k] -> is called python slicing
@@ -13,7 +15,9 @@ type(superhero)
 string = input("Enter your string: ")
 print("sub_string from 4th charecter: ",string[4:])
 print("sub_string upto and excluding 4th charecter: ",string[:4])
-print(string[5:10:4])
+print("sliced forward string: ",string[5:10:4])
+print("sliced backward string: ",string[10:5:-1])
+
 
 #reverse the string
 rev = string[::-1]
