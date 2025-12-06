@@ -1,5 +1,6 @@
 import os
 import math
+import random
 
 
 def factorial(num):
@@ -16,11 +17,11 @@ while(True):
 
     os.system("clear")
 
-    print("Available operations: +  -  *  / sqrt  ^  !  sin  cos  tan")
+    print("Available operations: +  -  *  / sqrt  ^  !  sin  cos  tan random")
     operation = input("Enter operation: ")
 
      # For trig functions & sqrt, we need only one number
-    if operation in ["sin", "cos", "tan", "sqrt","!"]:
+    if operation in ["sin", "cos", "tan", "sqrt","!","random"]:
         num = float(input("Enter the number: "))
         
         # these trig functons take entries in radian so they need type convert
@@ -42,6 +43,9 @@ while(True):
                     print("Factorial of negative number not possible")
                     continue
                 result = factorial(num)
+            
+            case "random":
+                print(f"random numbers between 1 and {num} is {random.randint(1,num)}")
 
         print(operation, num, " = ", result)
 
