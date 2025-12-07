@@ -1,17 +1,17 @@
 
 def substring_exists(s, sub):
-    """Checks if a substring exists in a string.
+    # Check whether 'sub' exists inside 's'
+    # Loop through the main string
+    for i in range(len(s) - len(sub)+1):
 
-    Args:
-        s: The main string.
-        sub: The substring to check for.
+        # Compare the slice with the substring
+        if(s[i:i+len(sub)] == sub):
+            return True
 
-    Returns:
-        True if the substring exists, False otherwise.
-    """
-    return sub in s
+    return False
 
-if __name__ == "__main__":
+
+if(__name__ == "__main__"):
     main_string = "Hello, World! This is a test."
     substring1 = "World"
     substring2 = "Python"

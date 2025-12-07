@@ -1,23 +1,34 @@
 
 from collections import Counter
 
+# Finds the most frequent character in a string.
 def most_frequent_char(s):
-    """Finds the most frequent character in a string.
-
-    Args:
-        s: The input string.
-
-    Returns:
-        The most frequent character in the string.
-    """
     if not s:
         return None
-    # Remove spaces and convert to lowercase for accurate counting
+
     s = s.replace(" ", "").lower()
     if not s:
-        return None
-    return Counter(s).most_common(1)[0][0]
+        return None # if no valid input present return None
 
-if __name__ == "__main__":
+    freq = {}  # dictionary to count characters
+
+    for ch in s:
+        if ch in freq:
+            freq[ch] += 1
+        else:
+            freq[ch] = 1
+
+    most_common = None
+    highest = 0
+
+    for ch, count in freq.items():
+        if count > highest:
+            highest = count
+            most_common = ch
+
+    return most_common
+
+
+if(__name__ == "__main__"):
     input_string = "programming is fun"
     print(f"The most frequent character in '{input_string}' is: '{most_frequent_char(input_string)}'")
