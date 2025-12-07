@@ -567,3 +567,255 @@ The second parameter can't be empty — you must specify indices.
 
 <br>
 <br>
+
+## **9. `numpy.linalg.norm(vector)`**
+
+**`linalg`** ---> means linear algebra module and **`norm`** is a function that measures length or magnitude of a vector.
+
+```
+dot(v1, v2)
+----------------- = cos(angle)
+|v1| * |v2|
+```
+
+---
+
+### 📌 Mini numerical example
+
+Let:
+
+```
+v1 = [1, 2]
+v2 = [3, 4]
+```
+
+Dot = `1*3 + 2*4 = 11`
+
+Lengths:
+
+```
+|v1| = √(1^2 + 2^2) = √5 ≈ 2.236
+|v2| = √(3^2 + 4^2) = √25 = 5
+```
+
+Multiply lengths:
+
+```
+2.236 * 5 = 11.18
+```
+
+cos(angle) = 11 / 11.18 = 0.983
+
+So angle ≈ small, meaning vectors point similarly.
+
+<br>
+<br>
+
+## **10. vectorization and broadcasting**
+
+
+✔ `str.upper()` is a **Python string method**, not a NumPy ufunc.
+✔ NumPy arrays don’t automatically apply Python functions element-wise.
+
+Example:
+
+```python
+arr = np.array(["a", "b", "c"])
+arr.upper()   # ❌ doesn’t work
+```
+
+So NumPy gives you **`np.vectorize()`**, which is basically a wrapper that loops for you — applying `str.upper()` to each element.
+
+Think of it like turning **a normal function into a function that works on arrays**.
+
+➡️ It’s NOT speed optimization — it’s just convenience.
+
+### So this:
+
+```python
+vectorized_upper = np.vectorize(str.upper)
+vectorized_upper(arr)
+```
+
+means
+
+> “apply `upper()` to every item inside the array.”
+
+---
+
+### 👉 **So why didn’t we vectorize the `/ 12` part?**
+
+Because `/` is **already a NumPy-supported element-wise operation**.
+
+NumPy knows how to broadcast numbers and divide entire arrays efficiently.
+
+```python
+arr / 12
+```
+
+✔ is already vectorized internally
+✔ executed in fast C-optimized code
+✔ no need for `np.vectorize`
+
+
+### ✔ Some operations are *native ufuncs* (built-in NumPy element-wise ops):
+
+* +, -, *, /
+* sin(), log(), sqrt()
+* comparisons (> < ==)
+* etc.
+
+➡️ These work directly on whole arrays = **broadcasting**
+
+---
+
+### ❌ But pure Python functions (like `str.upper`, your own functions, lambda, etc.) **don’t automatically work element-wise.**
+
+So NumPy gives:
+
+✔ `np.vectorize()` → wraps your function to loop internally
+✔ It makes this:
+
+```python
+[str.upper(item) for item in array]
+```
+
+look like this:
+
+```python
+np.vectorize(str.upper)(array)
+```
+
+---
+
+---
+
+### ✨ Why doesn’t NumPy auto-broadcast Python functions?
+
+Because NumPy is optimized for **numerical operations**, not arbitrary Python objects.
+Strings aren’t its native domain — so it doesn’t inherently know how to apply string methods.
+
+---
+
+---
+
+### ⚡ Final clarity in one sentence:
+
+> We vectorize only when NumPy doesn't already know how to apply an operation element-wise.
+
+✔ `/12` is already element-wise → no need to vectorize
+❌ `str.upper()` is not → so we wrap it with `np.vectorize`
+
+---
+
+---
+
+### 📌 When should you use `np.vectorize()`?
+
+* When applying Python string methods
+* When applying your own functions
+* When NumPy doesn’t have a built-in version
+
+Example:
+
+```python
+def square_plus_one(x):
+    return x*x + 1
+
+vfunc = np.vectorize(square_plus_one)
+vfunc(np.array([1,2,3]))
+```
+
+⚠ But remember: `np.vectorize` **does NOT increase performance** — it's just a convenience wrapper.
+
+---
+
+---
+
+### 🔥 Better alternative for string operations in NumPy
+
+NumPy actually has its own optimized string module:
+
+```python
+np.char.upper(arr)
+```
+
+This is **faster than `np.vectorize(str.upper)`** because it's written in C.
+
+---
+
+---
+
+### ✔ Summary to keep in your head:
+
+| Operation Type                    | NumPy Knows? | Need Vectorize? |
+| --------------------------------- | ------------ | --------------- |
+| Math ops `/`, `*`, `+`            | Yes          | ❌ No            |
+| NumPy ufuncs `sin`, `log`, `sqrt` | Yes          | ❌ No            |
+| String methods `upper()`          | No           | ✔ Yes           |
+| Custom functions                  | No           | ✔ Yes           |
+
+
+## **11. matrix multiplication**
+
+
+
+### **Hadamard (Element-wise) Multiplication**
+
+**Definition:**
+Multiply matching elements of two equal-shaped vectors/matrices.
+
+**Example:**
+
+```
+A = [1, 2, 3]
+B = [4, 5, 6]
+A ⊙ B = [1×4, 2×5, 3×6] = [4, 10, 18]
+```
+
+**Where used in AI/ML:**
+• Neural networks (activation scaling)
+• Attention mechanisms
+• Feature-wise interactions
+
+---
+
+### **Dot Product (inner product)**
+
+**Definition:**
+Multiply and sum matching elements → single number.
+
+**Syntax:**
+
+```python
+numpy.dot(A, B)
+```
+
+**Example:**
+
+```
+[1,2,3] · [4,5,6] = 1×4 + 2×5 + 3×6 = 32
+```
+
+---
+
+### **Matrix Multiplication (real linear algebra multiplication)**
+
+**Definition:**
+Row × column rules — shapes follow (m×n) × (n×p) = (m×p)
+
+**Syntax:**
+
+```python
+numpy.matmul(A, B)       # or A @ B
+```
+
+**Example:**
+
+```
+[1 2]      [4]   = [1×4 + 2×6]
+[3 4]  ×   [6]     [3×4 + 4×6]
+```
+
+<br>
+<br>

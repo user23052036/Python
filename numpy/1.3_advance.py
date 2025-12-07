@@ -35,27 +35,7 @@ sales_data = numpy.array([
  [27,286599,321488,225199,431877,395211,187411,176944,364199,422311,172890],
  [28,366410,251122,351799,212800,443210,300188,254990,416799,172844,379122],
  [29,278411,477200,168899,347988,391100,188722,237744,398900,468322,299811],
- [30,324988,219588,466299,171411,422140,391200,196410,312799,385221,261700],
- [31,172910,399411,301099,286700,157422,227533,455600,156990,433299,324122],
- [32,345280,289900,422388,151420,199411,311288,268800,489122,232711,165991],
- [33,289711,231410,176589,402911,299400,374211,411860,199100,355122,478921],
- [34,478211,187420,356400,255199,341110,450988,123400,278188,462599,319144],
- [35,355900,244188,429711,344500,167944,280177,387544,146890,321544,444299],
- [36,166822,354900,260411,388700,147510,478922,268544,315411,244110,392800],
- [37,222144,298440,397710,499188,368911,261544,433911,257499,152422,315122],
- [38,445911,239200,299500,387210,217899,169300,278799,421900,326711,193200],
- [39,314522,187322,450188,260711,478731,244900,167799,375411,299844,411299],
- [40,273199,399822,266450,312899,228400,481122,300911,189200,452122,237944],
- [41,311100,289455,379988,148933,366711,214399,469200,155288,399811,332700],
- [42,289900,388211,432988,255410,148287,461299,237910,322144,467922,195411],
- [43,478299,222411,200788,441290,344122,278422,391744,244788,148399,436522],
- [44,159500,422211,344661,198922,250488,367199,135988,455221,207944,478311],
- [45,421988,198755,387422,299882,414533,229800,378299,322987,160422,355788],
- [46,398211,355144,256110,421900,369722,145733,261411,298777,414299,187544],
- [47,275188,466990,312411,189744,348199,377211,222931,445099,367144,268900],
- [48,387511,255733,477299,312455,299822,156488,421522,275900,210411,489122],
- [49,232410,311922,244199,488322,276988,399277,198122,364922,450188,354199],
- [50,411788,278900,369199,299144,230822,487910,364211,199300,232711,422533]
+ [30,324988,219588,466299,171411,422140,391200,196410,312799,385221,261700]
 ])
 
 
@@ -63,7 +43,62 @@ sales_data = numpy.array([
 
 print("shape of sales data: ",sales_data.shape)
 print("sales of first 5 restaurant:\n",sales_data[0:5])
+print("sales of first 5 restaurant:\n",sales_data[:, 1:5]) # select all rowa and then given range [1:5] col 1 to 5
+
+print("year wise add: ",numpy.sum(sales_data,axis=0))
+# another way to do it
+yearly_data = numpy.sum(sales_data[:,1:],axis=0)
+print("yearly data: ",yearly_data)
+
+min_sales = numpy.min(sales_data[:, 1:],axis=1)
+print("Minimum sales per restaurant: \n",min_sales)
+
+max_sales = numpy.min(sales_data[:, 1:],axis=0)
+print("maximum sales per year: \n",max_sales)
+
+avg_sales = numpy.mean(sales_data[:, 1:],axis=1)
+print("average sales per restaurant: \n",avg_sales)
+
+cumulative_sales = numpy.cumsum(sales_data[:, 1:],axis=1)
+print("cumulative sales per restaurant: \n",cumulative_sales)
 
 
+plt.figure(figsize=(10,6))
+plt.plot(numpy.mean(cumulative_sales,axis=0))
+plt.title("Average cumulative sales across restaurants")
+# so for first year it will see all 30 restaurats cumulative sale and divide it with 30 to get mean cumulative sale
+# and so on for the 3nd and 3rd year
+plt.xlabel("years")
+plt.ylabel("sales")
+plt.grid(True)
+plt.show()
+
+print("-----------------------------------------------------------------------------------------------")
+
+# vector operations
+vector1 = numpy.array([1,2,3,4])
+vector2 = numpy.array([5,6,7,8])
+
+print("vector addition: ",vector1+vector2)
+
+# This is called Hadamard (element-wise) multiplication, not matrix multiplication.
+print("vector hadamard multiplication: ",vector1*vector2)
+
+v1 = vector1.reshape(4,1)   # column
+v2 = vector2.reshape(1,4)   # row
+print("matrix multiplication: ",numpy.matmul(v1, v2))
+
+dot_product = numpy.dot(vector1,vector2)
+angle = numpy.arccos(dot_product / (numpy.linalg.norm(vector1)*numpy.linalg.norm(vector2)))
+print("Dot product: ",dot_product)
+print("angle: ",angle)
 
 
+print("-----------------------------------------------------------------------------------------------")
+
+# vectorization and broadcasting
+
+arr = numpy.array(["a", "b", "c"])
+# arr.upper()   # ❌ doesn’t work
+vectorized_upper = numpy.vectorize(str.upper)
+print("vectorizaton of upper(): ",vectorized_upper(arr))

@@ -12,13 +12,16 @@ print("sliced array:\n",arr_1d[8:2:-1]) # start > stop  <== move backward
 
 
 # slicing in 2D array
-arr_2d = numpy.array([[1,2,3],
+arr_2d = numpy.array([
+                    [1,2,3],
                     [4,5,6],
                     [7,8,9]]) 
 print("original matrix:\n",arr_2d)
 print("specific element:\n",arr_2d[1,1]) # [row,col]
 print("Entire row:\n",arr_2d[2]) # row_indx
-print("Entire column:\n",arr_2d[:, 2]) # all rows of 2nd column (:) all
+print("column:\n",arr_2d[:, 1:3]) # all rows of of 1st to 2nd column
+# [:, start:stop]   start,stop for columns (stop is excluded)
+
 
 print("-----------------------------------------------------------------------------------------------")
 
@@ -80,20 +83,20 @@ print("compatibility shape",a.shape == b.shape)
 print("-----------------------------------------------------------------------------------------------")
 
 
-original = np.array([[1,2,3],[4,5,6],[7,8,9]])
+original = numpy.array([[1,2,3],[4,5,6],[7,8,9]])
 print("original:\n", original)
 
 # Add row
-with_new_row = np.vstack((original,[55,44,33]))
+with_new_row = numpy.vstack((original,[55,44,33]))
 print("after adding new row:\n", with_new_row)
 
 # Correct 3×1 column
-new_col = np.array([[55],
+new_col = numpy.array([[55],
                     [44],
                     [33]])
 
 # Add column
-with_new_col = np.hstack((original, new_col))
+with_new_col = numpy.hstack((original, new_col))
 print("after adding new col:\n", with_new_col)
 
 
