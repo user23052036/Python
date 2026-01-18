@@ -3,7 +3,6 @@ def substring_exists(s, sub):
     # Check whether 'sub' exists inside 's'
     # Loop through the main string
     for i in range(len(s) - len(sub)+1):
-
         # Compare the slice with the substring
         if(s[i:i+len(sub)] == sub):
             return True

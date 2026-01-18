@@ -35,8 +35,8 @@ print(my_tuple)
 
 
 # Unpacking
-a, b = t1
-print('Unpacked a,b =', a, b)
+# a,b = t1
+# print('Unpacked a,b =', a, b)
 
 
 

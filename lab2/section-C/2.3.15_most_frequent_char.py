@@ -21,7 +21,7 @@ def most_frequent_char(s):
     most_common = None
     highest = 0
 
-    for ch, count in freq.items():
+    for ch,count in freq.items():
         if count > highest:
             highest = count
             most_common = ch

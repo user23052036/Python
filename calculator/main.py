@@ -45,7 +45,7 @@ while(True):
                 result = factorial(num)
             
             case "random":
-                print(f"random numbers between 1 and {num} is {random.randint(1,num)}")
+                print(f"random numbers between 1 and {num} is {random.randint(1,int(num))}")
 
         print(operation, num, " = ", result)
 
