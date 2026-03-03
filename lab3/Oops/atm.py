@@ -12,15 +12,15 @@ class ATM:
     def __init__(self):
         self.__pin = ''
         self.__balance = 0.0
-        self.sno = ATM._counter
-        ATM._counter += 1
+        self.sno = ATM.__counter
+        ATM.__counter += 1
 
         print(f'address of self = {id(self)}')
         self.menu()
     
     
     # --------------------
-    # Getter & Setter counter
+    # Getter counter
     # static methods are not onject dependent so dont need self
     # --------------------
     @staticmethod
@@ -28,7 +28,7 @@ class ATM:
         return ATM.__counter
     
     # --------------------
-    # Getter & Setter counter
+    # Setter counter
     # --------------------
     @staticmethod
     def set_counter(val):
@@ -38,7 +38,7 @@ class ATM:
             print('Invalid counter set')
 
     # --------------------
-    # Getter & Setter PIN
+    # Getter PIN
     # --------------------
     def set_pin(self, new_pin):
         if new_pin.isdigit():
@@ -47,6 +47,9 @@ class ATM:
         else:
             print("incorrect pin entered")
 
+    # --------------------
+    # Setter PIN
+    # --------------------
     def get_pin(self):
         return self.__pin
 
@@ -82,8 +85,10 @@ class ATM:
         else:
             print('Bye')
     
+
+
     def create_pin(self):
-        self.__pin = input("Enter your pin: ")
+        self.__pin = input("Create your pin: ")
 
     def deposite(self):
         pin = input('Enter pin: ')
