@@ -61,6 +61,10 @@ print(numbers)
 lst = [10, 20, 30, 40]
 print('\nlst[0]=', lst[0], 'lst[-1]=', lst[-1])
 
+# deliting element from a list by index number
+del lst[2]
+print(lst)
+
 # Slicing (non-destructive)
 print('\nlst[1:3] ->', lst[1:3])
 print('lst[:2] ->', lst[:2])
