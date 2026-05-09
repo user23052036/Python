@@ -38,5 +38,10 @@ print(my_tuple)
 # a,b = t1
 # print('Unpacked a,b =', a, b)
 
+t = (1, [2,3])
+hash(t)  # TypeError
+# tuplils are not allways hashable , for it to be hashable all the ineral elements needs to be 
+# hashable as well
+
 
 
