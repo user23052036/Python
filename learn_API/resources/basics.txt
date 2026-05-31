@@ -1,0 +1,33 @@
+## basics
+- API is just like a connector which connects two different software components to communicate with eachother
+- follows a specific protocol
+
+## example
+- database <----> backend <----> frontend
+- without API we develop our whole application as a single repo where we communicate through function call
+
+
+src/
+  frontend/
+    code1/
+    code2/
+    code3/
+  backend/
+    code1/
+    code2/
+    code3/
+
+## problems with monolithic architechture
+- tightly coupled
+- if any other copany or user needs the access of the data stored in our database then they have few options:
+- 1. either we give access to our private database to them, which is not possible
+- 2. or we give access to the backend code so that they can call function to get the datat from database
+- this is also not possible because of the tightly coupled nature of our code, we dont have seperate backend code written
+  they need to run the whole program to get acess to backend.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## solution
+- need to decouple frontend/ and backend/ so they run independently of each other
+- API layer becomes the medium of communication between them
+- we hit the API url to fetch info --> which in turn calls respective backend function to retrive info from our database
