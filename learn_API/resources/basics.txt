@@ -21,7 +21,7 @@ src/
 - tightly coupled
 - if any other copany or user needs the access of the data stored in our database then they have few options:
 - 1. either we give access to our private database to them, which is not possible
-- 2. or we give access to the backend code so that they can call function to get the datat from database
+- 2. or we give access to the backend code so that they can call function to get the data from database
 - this is also not possible because of the tightly coupled nature of our code, we dont have seperate backend code written
   they need to run the whole program to get acess to backend.
 
