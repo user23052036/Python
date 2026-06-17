@@ -2,15 +2,7 @@ import os
 import math
 import random
 
-
-def factorial(num):
-
-    num = int(num)
-    if(num == 0): return 1
-    else:
-        temp=1.0
-        for i in range(1,num+1): temp *= i
-        return temp
+import basic_operations
 
 
 while(True):
@@ -38,11 +30,7 @@ while(True):
                     continue
                 result = math.sqrt(num)
 
-            case "!":
-                if(num<0):
-                    print("Factorial of negative number not possible")
-                    continue
-                result = factorial(num)
+            case "!": result = basic_operations.factorial(num)
             
             case "random":
                 print(f"random numbers between 1 and {num} is {random.randint(1,int(num))}")
@@ -51,33 +39,17 @@ while(True):
 
     else:
         # Normal 2-number operations
-        num1 = float(input("Enter the first number: "))
-        num2 = float(input("Enter the second number: "))
+        num1 = input("Enter the first number: ")
+        num2 = input("Enter the second number: ")
 
         match operation:
-            case "+": result = num1 + num2
-
-            case "-": result = num1 - num2
-
-            case "*": result = num1 * num2
-
-            case "/":
-                if num2 == 0:
-                    print("Division not possible")
-                    continue
-                result = num1 / num2
-
+            case "+": result = basic_operations.addition(num1,num2)
+            case "-": result = basic_operations.subtraction(num1,num2)
+            case "*": result = basic_operations.multiplication(num1,num2)
+            case "/": result = basic_operations.division(num1,num2)
             case "^": result = num1 ** num2
-
-            case "%":
-                if num2 == 0:
-                    print("Division not possible")
-                    continue
-                result = num1 % num2
-
-            case _:
-                print("Invalid operation")
-                continue
+            case "%": result = basic_operations.remainder(num1,num2)
+            case _: result = basic_operations.power(num1,num2)
 
         print(num1, operation, num2, " = ", result)
 
