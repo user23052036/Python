@@ -1,1 +1,6 @@
 ipykernel
+yfinance
+bs4
+nbformat
+matplotlib
+folium
