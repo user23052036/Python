@@ -11,6 +11,27 @@ class Solution1:
 
 class Solution2:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        arr = []
+        for i,num in enumerate(nums):
+            arr.append((num,i))
+        arr.sort(key=lambda x:x[0])
+
+        left = 0
+        right = len(arr)-1
+
+        while left<right:
+            total = arr[left][0] + arr[right][0]
+
+            if total == target:
+                return [arr[left][1], arr[right][1]]
+            elif total < target:
+                left += 1
+            else:
+                right -= 1
+
+
+class Solution3:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         my_dick = {}
 
         for indx,num in enumerate(nums):
@@ -23,7 +44,7 @@ class Solution2:
                 return [indx, complement_indx]
             
 
-class Solution3:
+class Solution4:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         my_dick = {}
         for i in range(len(nums)):
