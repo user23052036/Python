@@ -35,3 +35,10 @@ class Solution2:
             if my_dick[s[i]] == 1:
                 return i
         return -1
+    
+# Input
+s = input()
+
+# Output
+obj = Solution2()
+print(obj.firstUniqChar(s))

@@ -17,3 +17,14 @@ class Solution:
             if magazine_freq[ch]<0:
                 return False
         return True
+
+import sys
+input = sys.stdin.readline
+
+# Input
+ransomNote = input().strip()
+magazine = input().strip()
+
+# Output
+obj = Solution()
+print(obj.canConstruct(ransomNote, magazine))

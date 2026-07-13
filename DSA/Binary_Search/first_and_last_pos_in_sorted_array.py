@@ -93,3 +93,11 @@ class Solution2:
                 high = mid - 1
 
         return [first, last]
+    
+# Input
+nums = list(map(int, input("Enter sorted array: ").split()))
+target = int(input("Enter target: "))
+
+# Output
+obj = Solution()
+print("Range:", obj.searchRange(nums, target))

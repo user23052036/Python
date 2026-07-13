@@ -41,3 +41,10 @@ class Solution:
         if cnt:
             return ans+1
         return ans
+
+# Input
+s = input()
+
+# Output
+obj = Solution()
+print(obj.longestPalindrome(s))

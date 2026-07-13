@@ -54,3 +54,10 @@ class Solution2:
                 low = mid + 1
 
         return mini
+    
+# Input
+arr = list(map(int, input("Enter mountain array: ").split()))
+
+# Output
+obj = Solution1()
+print("Peak Index:", obj.peakIndexInMountainArray(arr))

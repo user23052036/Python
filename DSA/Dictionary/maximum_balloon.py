@@ -51,5 +51,14 @@ class Solution2:
         return cnt
             
         
-            
+
+import sys
+input = sys.stdin.readline
+
+# Input
+text = input().strip()
+
+# Output
+obj = Solution1()
+print(obj.maxNumberOfBalloons(text))       
         

@@ -15,6 +15,10 @@ to find the first bad version. You should minimize the number of calls to the AP
 # The isBadVersion API is already defined for you.
 # def isBadVersion(version: int) -> bool:
 
+def isBadVersion(version):
+    return version >= first_bad
+
+
 class Solution:
     def firstBadVersion(self, n: int) -> int:
         low = 1
@@ -24,9 +28,19 @@ class Solution:
         while low<=high:
             mid = low + (high-low)//2
 
-            if isBadVersion(mid): # pyright: ignore[reportUndefinedVariable]
+            if isBadVersion(mid):
                 ans = mid
                 high = mid-1
             else:
                 low = mid+1
+
         return ans
+
+
+# Input
+n = int(input("Enter total number of versions: "))
+first_bad = int(input("Enter first bad version: "))
+
+# Output
+obj = Solution()
+print("First Bad Version:", obj.firstBadVersion(n))
