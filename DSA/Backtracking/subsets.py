@@ -8,6 +8,8 @@ Input: nums = [0]
 Output: [[],[0]]
 """
 
+# O(2^n *n) TC as there are 2^n subsets and to print we assume avg size to be n/2 --> n so n*2^n
+# stack space is O(n)
 class Solution:
     def search_dfs(self,nums,i,n,stack,ans):
         if i>=n:
