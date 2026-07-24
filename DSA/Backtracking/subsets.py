@@ -10,7 +10,7 @@ Output: [[],[0]]
 
 # O(2^n *n) TC as there are 2^n subsets and to print we assume avg size to be n/2 --> n so n*2^n
 # stack space is O(n)
-class Solution:
+class Solution1:
     def search_dfs(self,nums,i,n,stack,ans):
         if i>=n:
             ans.append(stack.copy())
@@ -30,6 +30,59 @@ class Solution:
         
         self.search_dfs(nums,0,len(nums),stack,ans)
         return ans
+
+
+class Solution2:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        def backtrack(indx,length):
+            ans.append(stack.copy())
+            # if indx==length:
+            #     return
+
+            for i in range(indx,length):
+                # adds to the path and move to next indx rec call
+                stack.append(nums[i])
+                backtrack(i+1,length)
+                stack.pop()
+        ans = []
+        stack = []
+        backtrack(0,len(nums))
+        return ans
+
+
+# -----------------------------------------------------------------------------------------
+# IMPORTANT:
+#
+# In the for-loop style backtracking, we do NOT need:
+#
+#     if start == len(nums):
+#         return
+#
+# because the loop itself becomes the base case.
+#
+# When start == len(nums):
+#
+#     for i in range(len(nums), len(nums)):
+#
+# executes zero iterations, so the function naturally reaches its end
+# and returns.
+#
+# Think of it as:
+#
+#     "No candidates left to choose."
+#
+# rather than
+#
+#     "Reached the base case."
+#
+# This optimization ONLY works for the for-loop recursion pattern.
+#
+# It does NOT work in Pick/Not Pick recursion because that approach
+# directly accesses nums[index]. Without an explicit base case,
+# it would try to access nums[len(nums)] and crash with IndexError.
+
+# -----------------------------------------------------------------------------------------------
+
 
 
 # IMPORTANT: Use stack.copy() instead of stack.
