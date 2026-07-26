@@ -26,12 +26,12 @@ class Solution1:
             path.pop()
 
             # 2. Skip Duplicates Optimization (optional)
-            # next_ind = ind + 1
-            # while next_ind < len(candidates) and candidates[next_ind] == candidates[ind]:
-            #     next_ind += 1
+            next_ind = ind + 1
+            while next_ind < len(candidates) and candidates[next_ind] == candidates[ind]:
+                next_ind += 1
 
             # Don't pick the current element
-            findCombinations(ind + 1, target)
+            findCombinations(next_ind, target)
 
         my_set = set()
         path = []
