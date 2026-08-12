@@ -1,4 +1,6 @@
 # 543. Diameter of Binary Tree
+longest path between two nodes in a binary tree. The path may or maynot pass through the root, measured by the number of edges between nodes in the path.
+
 
 class Solution1:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
