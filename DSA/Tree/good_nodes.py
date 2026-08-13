@@ -13,6 +13,8 @@ Return the number of good nodes in the binary tree.
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         def dfs_count_good(root,maxVal):
@@ -27,3 +29,22 @@ class Solution:
             return res+left_tree+right_tree
         
         return dfs_count_good(root,root.val)
+
+
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        def helper(root,maxi):
+            nonlocal counter
+            
+            if root.left:
+                helper(root.left, max(maxi, root.left.val))
+            if root.right:
+                helper(root.right, max(maxi, root.right.val))
+            
+            # backtrack calc
+            if root.val >= maxi:
+                counter += 1
+        
+        counter = 0
+        helper(root,root.val)
+        return counter

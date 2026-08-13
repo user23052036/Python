@@ -43,3 +43,23 @@ class Solution:
                 return inorder(root.right)
         
         return inorder(root)
+
+"""
+Here in the above code we will never recursively return None as every single time we are deciding what branch to 
+choose. We choose only that branch which has P and Q present so before hitting None we are sure to hit either p
+or Q.
+
+# Binary Search Tree Structure(BST)
+#
+#                    16              
+#                  /    \
+#                8        20
+#               / \      /  \
+#              3   12   17   25
+#                 /  \
+#                11   p
+#                    / 
+#                  13
+#                    \
+#                     q
+"""

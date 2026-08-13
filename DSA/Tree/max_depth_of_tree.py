@@ -13,6 +13,29 @@ class Solution:
         return calc_height(root)
 
 
+from collections import deque
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+
+        level = 0
+        q = deque()
+        q.append(root)
+
+        while q:
+            size = len(q)
+            level += 1
+            while size:
+                node = q.popleft()
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+                size -= 1
+        return level
+                
+
 """
 A useful pattern to remember
 Many tree DP problems follow this template:
